@@ -43,3 +43,4 @@
 # resize-overlay-duration = 4s 200ms
 
 theme = catppuccin-latte.conf
+font-size = 9
