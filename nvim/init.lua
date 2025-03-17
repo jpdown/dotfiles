@@ -621,7 +621,7 @@ require("lazy").setup({
 			local servers = {
 				clangd = { cmd = { "clangd", "--query-driver=/usr/bin/arm-none-eabi-gcc" } },
 				-- gopls = {},
-				-- pyright = {},
+				pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -975,6 +975,7 @@ require("lazy").setup({
 	--
 
 	{ "numToStr/Comment.nvim", opts = {} },
+	{ "Ernest1338/termplug.nvim" },
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
@@ -1007,6 +1008,11 @@ require("lazy").setup({
 		},
 	},
 })
+
+require("termplug").setup()
+
+vim.keymap.set("n", "<leader>tg", "<cmd> Term lazygit <CR>", { desc = "Open popup [T]erminal with lazy[G]it" })
+vim.keymap.set("n", "<leader>tt", "<cmd> Term <CR>", { desc = "Open popup [T]erminal" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
