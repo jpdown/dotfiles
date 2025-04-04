@@ -8,3 +8,7 @@ rm ~/.config/fish
 ln -s "$(pwd)/fish/" ~/.config/fish
 rm ~/.config/lazygit
 ln -s "$(pwd)/lazygit/" ~/.config/lazygit
+rm ~/.config/wezterm
+ln -s "$(pwd)/wezterm/" ~/.config/wezterm
+rm ~/.config/yazi
+ln -s "$(pwd)/yazi/" ~/.config/yazi
