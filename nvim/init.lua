@@ -714,7 +714,13 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
+				python = function(bufnr)
+					if require("conform").get_formatter_info("ruff_format", bufnr).available then
+						return { "ruff_fix", "ruff_format" }
+					else
+						return { "black" }
+					end
+				end,
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -891,7 +897,24 @@ require("lazy").setup({
 			--  - va)  - [V]isually select [A]round [)]paren
 			--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
 			--  - ci'  - [C]hange [I]nside [']quote
-			require("mini.ai").setup({ n_lines = 500 })
+			local ai = require("mini.ai")
+			ai.setup({
+				n_lines = 500,
+				custom_textobjects = {
+					f = ai.gen_spec.treesitter({
+						a = "@function.outer",
+						i = "@function.inner",
+					}),
+					c = ai.gen_spec.treesitter({
+						a = "@conditional.outer",
+						i = "@conditional.inner",
+					}),
+					-- i = gen_spec.treesitter({
+					-- 	a = "@indent.outer",
+					-- 	i = "@indent.inner",
+					-- }),
+				},
+			})
 
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
