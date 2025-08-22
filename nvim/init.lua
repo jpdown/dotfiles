@@ -999,6 +999,13 @@ require("lazy").setup({
 
 	{ "numToStr/Comment.nvim", opts = {} },
 	{ "Ernest1338/termplug.nvim" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
@@ -1036,6 +1043,8 @@ require("termplug").setup()
 
 vim.keymap.set("n", "<leader>tg", "<cmd> Term lazygit <CR>", { desc = "Open popup [T]erminal with lazy[G]it" })
 vim.keymap.set("n", "<leader>tt", "<cmd> Term <CR>", { desc = "Open popup [T]erminal" })
+
+require("ibl").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
