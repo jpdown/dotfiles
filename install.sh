@@ -12,3 +12,5 @@ rm ~/.config/wezterm
 ln -s "$(pwd)/wezterm/" ~/.config/wezterm
 rm ~/.config/yazi
 ln -s "$(pwd)/yazi/" ~/.config/yazi
+rm ~/.config/helix
+ln -s "$(pwd)/helix/" ~/.config/helix
